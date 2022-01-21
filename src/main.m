@@ -53,11 +53,6 @@ function [] = main(tasks)
         disp('Now running the 2nd demo case: Contrast imaging...')
         cmc = tasks.multiple_comparison_correction; % whether to perform corrections for multiple comparisons
         
-%         % add fieldtrip path and configures up the minimal required path
-%         % settings
-        addpath('/home/yzha0576/cn25/yzha0576/software/fieldtrip-20200828');
-        ft_defaults;
-        
         for i = 1:length(name) % iterate over all data files if there is more than one to run
             tmp = regexp(name{i}, '[_.]', 'split');
             sub_ind = tmp{2}; % get subject index
