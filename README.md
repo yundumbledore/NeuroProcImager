@@ -1,4 +1,4 @@
-# whole-brain-imaging
+# whole-brain-imaging (Officially, NeuroPhysViewer)
 #### Author: Yun Zhao (Monash University, Australia)
 #### Email: yun.zhao1@monash.edu
 
