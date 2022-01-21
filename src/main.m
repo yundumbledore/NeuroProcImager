@@ -62,21 +62,21 @@ function [] = main(tasks)
             task.fs = tasks.fs;
             task.FS = tasks.FS;
              
-%             [upper_index, lower_index, downsampled_alpha_pw] = find_strong_weak_alpha(task); % get alpha power from the signal and get occipital strong and weak alpha time indices
-%             
-%             load(['./output/variable_estimates_' num2str(sub_ind) '.mat'],'compact_list') % load variable estimates that have been obtained in showcase 1
-%             compact_list{9} = downsampled_alpha_pw; % add it into compact_list for parfor loop
-%             clear downsampled_alpha_pw
-%             
-%             % Run two sample t test to compare sample mean of variable estimates and alpha power between strong and weak occipital alpha power
-%             poolobj = parpool(tasks.ncpu);
-%             parfor (par_ind = 1:9, tasks.ncpu)
-%                 upper_sample = compact_list{par_ind}(:,upper_index); % retrieve variable estimates with respect to strong occipital alpha
-%                 lower_sample = compact_list{par_ind}(:,lower_index); % retrieve variable estimates with respect to weak occipital alpha
-%                 parameter_name = name_list{par_ind}; % get the variable name
-%                 twosample_ttest(str2num(sub_ind), parameter_name, upper_sample, lower_sample, cmc);
-%             end
-%             delete(poolobj)
+            [upper_index, lower_index, downsampled_alpha_pw] = find_strong_weak_alpha(task); % get alpha power from the signal and get occipital strong and weak alpha time indices
+          
+            load(['./output/variable_estimates_' num2str(sub_ind) '.mat'],'compact_list') % load variable estimates that have been obtained in showcase 1
+            compact_list{9} = downsampled_alpha_pw; % add it into compact_list for parfor loop
+            clear downsampled_alpha_pw
+           
+            % Run two sample t test to compare sample mean of variable estimates and alpha power between strong and weak occipital alpha power
+            poolobj = parpool(tasks.ncpu);
+            parfor (par_ind = 1:9, tasks.ncpu)
+                upper_sample = compact_list{par_ind}(:,upper_index); % retrieve variable estimates with respect to strong occipital alpha
+                lower_sample = compact_list{par_ind}(:,lower_index); % retrieve variable estimates with respect to weak occipital alpha
+                parameter_name = name_list{par_ind}; % get the variable name
+                twosample_ttest(str2num(sub_ind), parameter_name, upper_sample, lower_sample, cmc);
+            end
+            delete(poolobj)
  
             % whole brain visulisation starts here
             task.name_list = name_list;
