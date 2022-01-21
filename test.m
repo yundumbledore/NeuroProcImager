@@ -39,7 +39,7 @@ addpath(genpath('./src'))
 
 %% users needs to define following critical parameters
 pipeline = ["Contrast imaging"];                                            % which showcase to run. two showcases: "AKF estimation", "Contrast imaging".
-ncpu = 36;                                                                   % number of cpus you have
+ncpu = 1;                                                                   % number of cpus you have
 multiple_comparison_correction = 1;                                         % whether to perform corrections for multiple comparison problem (0 or 1)
 
 %% define some other parameters and save them in one variable 'tasks'
