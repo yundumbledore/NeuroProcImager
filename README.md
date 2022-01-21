@@ -1,5 +1,5 @@
 # NeuroPhysViewer
-#### Yun Zhao (Monash University, Australia), Email: yun.zhao1@monash.edu
+### Yun Zhao (Monash University, Australia), Email: yun.zhao1@monash.edu
 
 This github package is associated with the manuscript "Space-time resolved inference-basedcwhole-brain imaging of neural mechanisms: application to resting state alpha rhythm".
 
