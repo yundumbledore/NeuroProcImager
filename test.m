@@ -37,7 +37,7 @@ clc
 %% add source to MATLAB path
 addpath(genpath('./src'))
 
-%% users needs to define following critical parameters
+%% users need to check/define following critical parameters
 pipeline = ["AKF estimation"];                                            % which showcase to run. two showcases: "AKF estimation", "Contrast imaging".
 ncpu = feature('numcores');                                                 % number of cpus you have
 multiple_comparison_correction = 1;                                         % whether to perform corrections for multiple comparison problem (0 or 1)
