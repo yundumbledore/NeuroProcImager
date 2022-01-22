@@ -30,6 +30,11 @@ This showcase demonstrates estimating neurophysiological variables in the neural
 #### Case 2: Contrast imaging between strong and weak occipital alpha oscillation. 
 This showcase is to image the contrast of neurophysiological variables between when the occipital alpha power is strong and when it is weak. One needs to open the MATLAB script ‘test.m’ and put “Contrast imaging” in the ‘pipeline’ list. The variable ‘multiple_comparison_correction’ toggles between performing corrections for multiple comparisons or not. Note that the correction implemented in this case study is exclusively for individual-level analysis and not the same as what we did in the group-level, but the principal mechanism is the same with group-level analysis. You can then run the script by entering the following command in the MATLAB Command Window: ‘test’. The input to the framework is the neurophysiological variable estimates derived in Case 1 and the output is imaging showing the contrast of neurophysiological variables during strong and weak occipital alpha power. The output images can be found under the directory ‘/demo_cases/contrast_imaging/visualisation_outputs’. Three dimensions to view the brain are provided: lateral, rear, and dorsal view.
 
+**Case 2 visulisation outputs**
+Figure name                              | Figure legend                                                                                                                                                                  | Figure snapshot                                       
+-------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------  
+[Yuste et al.][#Yuste:1992]            | calcium imaging in tangential slices of barrel cortex L4 from P4-5 rats in figure2, and from somatosensory, visual and frontal cortices in general with coronal or tangential slices from P0-7. **500 x 575 µm FOV**. Mean domain size was 96 µm. 50 -120µm range. 'We found no differences in the size, shape, or frequency of domains in different cortical areas.'                               | ![](assets/img/yuste1992-fig2.png)
+
 #### Note: Case 1 should be run prior to Case 2.
 
 #### Time efficiency
