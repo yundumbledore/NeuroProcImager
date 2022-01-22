@@ -16,7 +16,7 @@ clc
 %
 % Case 1: Neurophysiological variables inference by AKF
 % To run Case 1, one needs to put "AKF estimation" in the pipeline variable
-% below.
+% below. +
 %
 % Case 2: Contrast imaging between strong and weak occipital alpha
 % oscillation.
