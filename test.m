@@ -38,7 +38,7 @@ clc
 addpath(genpath('./src'))
 
 %% users needs to define following critical parameters
-pipeline = ["Contrast imaging"];                                            % which showcase to run. two showcases: "AKF estimation", "Contrast imaging".
+pipeline = ["AKF estimation"];                                            % which showcase to run. two showcases: "AKF estimation", "Contrast imaging".
 ncpu = feature('numcores');                                                 % number of cpus you have
 multiple_comparison_correction = 1;                                         % whether to perform corrections for multiple comparison problem (0 or 1)
 
