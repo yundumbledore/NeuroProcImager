@@ -16,6 +16,15 @@ This github package is associated with the manuscript *Space-time resolved infer
 
 - After above steps, you download this package (NeuroPhysViewer), unzip and change the current working directory to this package in MATLAB Command Window and run 'defaults', which sets the defaults and configures up the minimal required path settings.
 
+## Common issues and solutions
+Issue: *For Mac users, the error "invalid MEX-file" might happen at the first time of running.*
+
+Solution: This link might help, https://in.mathworks.com/help/matlab/matlab_external/invalid-mex-file-error.html.
+
+Issue: *MATLAB complains that mexmaci64 cannot be opened because the developer cannot be verified.*
+
+Solution: This fieldtrip webpage might help, https://www.fieldtriptoolbox.org/faq/mexmaci64_cannot_be_opened_because_the_developer_cannot_be_verified/.
+
 ## Demonstration with example data
 The example data consists of 4714 MEG-derived source timeseries in the cerebral cortex from subject 21 and is available to download at https://drive.google.com/drive/folders/18EvFR4cr6YfhNUgZaijj9L3M1sG6cusL?usp=sharing. The data is to be put under the directory ‘/data’.
 
