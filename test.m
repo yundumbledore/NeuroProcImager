@@ -38,8 +38,8 @@ clc
 addpath(genpath('./src'))
 
 %% users need to check/define following critical parameters
-pipeline = ["AKF estimation"];                                            % which showcase to run. two showcases: "AKF estimation", "Contrast imaging".
-ncpu = feature('numcores');                                                 % number of cpus you have
+pipeline = ["AKF estimation"];                                              % which showcase to run. two showcases: "AKF estimation", "Contrast imaging".
+ncpu = feature('numcores');                                                 % number of cpus you have. By default, NeuroPhysViewer uses all cpus.
 multiple_comparison_correction = 1;                                         % whether to perform corrections for multiple comparison problem (0 or 1)
 
 %% define some other parameters and save them in one variable 'tasks'
