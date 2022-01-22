@@ -57,7 +57,7 @@ try
 catch ME
     disp(ME)
     
-    % shut down parallel pool if it exists
+    % shut down parallel pool if it exists when errors occur
     poolobj = gcp('nocreate');
     delete(poolobj)
 end
