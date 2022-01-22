@@ -32,7 +32,7 @@ This showcase is to image the contrast of neurophysiological variables between w
 
 #### Note: Case 1 should be run prior to Case 2.
 
-**Case 2 visulisation outputs**
+**Case 2 visulisation outputs (only shows lateral view with multiple comparison correction applied)**
 Figure legend    |         Figure snapshot                                                                                                                                                                                                                     
 -------------------------------------- |--------------------------------------------------  
 Individual-level (subject 21) contrast imaging of the alpha power during times of strong and weak occipital alpha rhythm. The colour bar refers to t-statistics indicating the mean difference between alpha power during strong and weak occipital alpha. Note this figure should not be interpreted in the context of hypothesis testing and only uses the t-statistic as a visualisation tool.           | ![](assets/sub_21_D1_v_pyr_corrected.jpg)
