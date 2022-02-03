@@ -55,7 +55,7 @@ Individual-level (subject 21) contrast imaging of the membrane potential of inhi
 Individual-level (subject 21) contrast imaging of the membrane potential of pyramidal population, V_p, during times of strong and weak occipital alpha rhythm, with corrections for multiple comparisons applied. The colour bar refers to t-statistics indicating the mean difference between membrane potential estimates under strong and weak posterior alpha. | ![](assets/sub_21_D1_v_pyr_corrected.jpg)
 
 #### Time efficiency
-Here we show basic time statistics of running this framework using a MacBook Pro (Processor 2.9 GHz 6-Core Intel Core i9, Memory 32 GB 2400 MHz DDR4).
+Here we show basic time statistics of running this framework using a MacBook Pro (Processor 2.9 GHz 6-Core Intel Core i9, Memory 32 GB 2400 MHz DDR4). The actual running time may vary depending on different computers/servers.
 
 "AKF estimation": 3.16 hr on 6 cpus (14.5 seconds each channel)
 
