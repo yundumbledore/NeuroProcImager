@@ -4,7 +4,7 @@
 This github package is associated with the manuscript *Space-time resolved inference-basedcwhole-brain imaging of neural mechanisms: application to resting state alpha rhythm*.
 
 ## Recommended system requirements
-- MATALB version: R2020a or later
+- MATLB version: R2020a or later
 - Storage: 10 GB available space
 
 **We recommend that you use a multi-core CPU, as the time efficiency depends on the number of CPU cores in your computer.**
