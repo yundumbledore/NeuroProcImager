@@ -4,6 +4,7 @@
 This github package is associated with the manuscript *Space-time resolved inference-basedcwhole-brain imaging of neural mechanisms: application to resting state alpha rhythm*.
 
 ## Recommended system requirements
+- Operating system: Windows 10
 - MATLB version: R2020a or later
 - Storage: 10 GB available space
 
