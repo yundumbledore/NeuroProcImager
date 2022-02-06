@@ -3,6 +3,18 @@
 
 **NeuroPhysViewer** is associated with the manuscript *Space-time resolved inference-basedcwhole-brain imaging of neural mechanisms: application to resting state alpha rhythm*.
 
+In general, **NeuroPhysViewer** is an inferenced-based whole-brain imaging framework, aiming at visualising nuerophysiological variables and thereby providing a novel way to understand neural mechanisms underlying given brain state. In this repository, there are two critical components, 
+1. Analytical Kalman Filter: estimates time-resolved neurophysiological variable in the neural mass model from the actual measurement
+2. Whole-brain imaging module: visualises neurophysiological variable estimates or statistical observations derived from neurophysiological variable estimates in a whole brain manner.
+
+In the below sections, you can find: 
+- **Recommended system requirements**
+- **Installation guide**
+- **Demonstration with example data**
+- **Common issues and solutions**
+- **Work with your own data and visualisation packages**
+- **Code reusability**
+
 ## Recommended system requirements
 - Operating system: Windows 10
 - MATLB version: R2020a or later
@@ -17,7 +29,7 @@
 
 - After above steps, you download this package (NeuroPhysViewer), unzip and change the current working directory to this package in MATLAB Command Window and run 'defaults', which sets the defaults and configures up the minimal required path settings.
 
-**Fieldtrip is an external package for visualisation purpose. You may use your own preferred visualisation packages, e.g., MNE-python (see 'Work with your own data and visualisation package' below).**
+**Fieldtrip is an external package for visualisation purpose. You may use your own preferred visualisation packages, e.g., MNE-python (see 'Work with your own data and visualisation packages' below).**
 
 ## Demonstration with example data
 The example data consists of 4714 MEG-derived source timeseries in the cerebral cortex from subject 21 and is available to download at https://drive.google.com/drive/folders/18EvFR4cr6YfhNUgZaijj9L3M1sG6cusL?usp=sharing. The data is to be put under the directory ‘/data’.
