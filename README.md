@@ -27,15 +27,15 @@ Before running showcases, you need to make sure that the current directory is �
 2.	‘ncpu’:  number of CPU cores you want to use. By default, NeuroPhysViewer uses all cores in your CPU.
 3.	‘multiple_comparison_correction’:  put 0 or 1 to indicate whether to perform corrections for multiple comparisons problem in Case 2.
 
-#### Case 1: Neurophysiological variables inference by AKF. 
+### Case 1: Neurophysiological variables inference by AKF. 
 This showcase demonstrates estimating neurophysiological variables in the neural mass model from 4714 MEG-derived source time-series by the AKF. You need to open the MATLAB script ‘test.m’ and put “AKF estimation” in the ‘pipeline’ list. You can run the script by entering the following command in the MATLAB Command Window: ‘test’.  The input to the framework is subject 21 MEG data containing 4714 virtual timeseries and the output is a (.mat) file containing neurophysiological variable estimates for every source point at ‘/output/variable_estimates_21.mat’. There are eight matrices in ‘/output/variable_estimates_21.mat’ and they are the neurophysiological variable estimates for α_ep, α_ip, α_pe, α_pi, μ, v_e, v_i, v_p. Each element contains 4714 rows representing 4714 MEG source points.
 
-#### Case 2: Contrast imaging between strong and weak occipital alpha oscillation. 
+### Case 2: Contrast imaging between strong and weak occipital alpha oscillation. 
 This showcase is to image the contrast of neurophysiological variables between when the occipital alpha power is strong and when it is weak. One needs to open the MATLAB script ‘test.m’ and put “Contrast imaging” in the ‘pipeline’ list. The variable ‘multiple_comparison_correction’ toggles between performing corrections for multiple comparisons or not. Note that the correction implemented in this case study is exclusively for individual-level analysis and not the same as what we did in the group-level, but the principal mechanism is the same with group-level analysis. You can then run the script by entering the following command in the MATLAB Command Window: ‘test’. The input to the framework is the neurophysiological variable estimates derived in Case 1 and the output is imaging showing the contrast of neurophysiological variables during strong and weak occipital alpha power. The output images can be found under the directory ‘/demo_cases/contrast_imaging/visualisation_outputs’. Three dimensions to view the brain are provided: lateral, rear, and dorsal view.
 
-#### Note: Case 1 should be run prior to Case 2.
+**Note: Case 1 should be run prior to Case 2.**
 
-**Case 2 visulisation outputs (only shows lateral view with multiple comparison correction applied)**
+#### Case 2 visulisation outputs (only shows lateral view with multiple comparison correction applied)
 Figure legend    |         Figure snapshot                                                                                                                                                                                                                     
 -------------------------------------- |--------------------------------------------------  
 Individual-level (subject 21) contrast imaging of the alpha power during times of strong and weak occipital alpha rhythm. The colour bar refers to t-statistics indicating the mean difference between alpha power during strong and weak occipital alpha. Note this figure should not be interpreted in the context of hypothesis testing and only uses the t-statistic as a visualisation tool.           | ![](assets/sub_21_D1_v_pyr_corrected.jpg)
@@ -67,6 +67,8 @@ Solution: This fieldtrip webpage might help, https://www.fieldtriptoolbox.org/fa
 **Please send us an email at yun.zhao1@monash.edu for further help and support.**
 
 ## Work with your own data and visualisation packages
+### Use your own data with AKF
+NeuroPhysViewer works with EEG, ECoG, MEG source imaging data. You need to name your data file in this format 'data_[subject index].mat', e.g., 'data_29.mat' means the data coming from subject 29, and put the data file in the directory '/data'. Then, you need to open the MATLAB script ‘test.m’ and put “AKF estimation” in the ‘pipeline’ list. You can run the script by entering the following command in the MATLAB Command Window: ‘test’. Finally, the output is a file containing neurophysiological variable estimates for channel (every source point) at ‘/output/variable_estimates_[subject_index].mat’, e.g., 'variable_estimates_29.mat' means the neurophysiological variable estimates for subject 29. There are eight matrices in the output file and they are the neurophysiological variable estimates for α_ep, α_ip, α_pe, α_pi, μ, v_e, v_i, v_p.
 
 
 ## Code reusability
