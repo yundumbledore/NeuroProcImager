@@ -73,7 +73,7 @@ NeuroPhysViewer works with EEG, ECoG, MEG source imaging data. You need to name 
 ### Use your own visualisation packages
 The output generated from "AKF estimation", the variable estimates file(s), can be further analysed by other statistical methods and visualised by other packages. In this repository, we provide one option, **Fieldtrip**, to visualise t-statistics derived from two-sample t-test which reveals the mean difference of variable estimates during strong and weak occipital alpha rhythm in a whole-brain manner.
 
-To use other visualisation toolboxes or packages, one needs to note that in the variable estimates file there are eight matrices in the output file and they are the neurophysiological variable estimates for α_ep, α_ip, α_pe, α_pi, μ, v_e, v_i, v_p. Each matrix is of size (number of channels x timesteps of the recording).
+To use other visualisation toolboxes or packages, one needs to note that in the variable estimates file there are eight matrices and they are the neurophysiological variable estimates for α_ep, α_ip, α_pe, α_pi, μ, v_e, v_i, v_p. Each matrix is of size (number of channels x timesteps of the recording).
 
 ## Code reusability
 NeuroPhysViewer is an open-source software and all users can use it for research, teaching and learning purposes. We kindly ask you to email us if you want to use it in your publication or integrate it in your toolboxes.
