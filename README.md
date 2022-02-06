@@ -1,7 +1,7 @@
 # NeuroPhysViewer
 #### Yun Zhao (Monash University, Australia), Email: yun.zhao1@monash.edu
 
-This github package is associated with the manuscript *Space-time resolved inference-basedcwhole-brain imaging of neural mechanisms: application to resting state alpha rhythm*.
+**NeuroPhysViewer** is associated with the manuscript *Space-time resolved inference-basedcwhole-brain imaging of neural mechanisms: application to resting state alpha rhythm*.
 
 ## Recommended system requirements
 - Operating system: Windows 10
@@ -17,14 +17,7 @@ This github package is associated with the manuscript *Space-time resolved infer
 
 - After above steps, you download this package (NeuroPhysViewer), unzip and change the current working directory to this package in MATLAB Command Window and run 'defaults', which sets the defaults and configures up the minimal required path settings.
 
-## Common issues and solutions
-Issue: *For Mac users, the error "invalid MEX-file" might happen at the first time of running.*
-
-Solution: This link might help, https://in.mathworks.com/help/matlab/matlab_external/invalid-mex-file-error.html.
-
-Issue: *MATLAB complains that mexmaci64 cannot be opened because the developer cannot be verified.*
-
-Solution: This fieldtrip webpage might help, https://www.fieldtriptoolbox.org/faq/mexmaci64_cannot_be_opened_because_the_developer_cannot_be_verified/.
+**Fieldtrip is an external package for visualisation purpose. You may use your own preferred visualisation packages, e.g., MNE-python (see 'Work with your own data and visualisation package' below).**
 
 ## Demonstration with example data
 The example data consists of 4714 MEG-derived source timeseries in the cerebral cortex from subject 21 and is available to download at https://drive.google.com/drive/folders/18EvFR4cr6YfhNUgZaijj9L3M1sG6cusL?usp=sharing. The data is to be put under the directory ‘/data’.
@@ -61,6 +54,20 @@ Here we show basic time statistics of running this framework using a MacBook Pro
 "AKF estimation": 3.16 hr on 6 cpus (14.5 seconds each channel)
 
 "Contrast imaging": 1 hr on 6 cpus (with corrections for multiple comparisons); 0.14 hr on 6 cpus (without corrections for multiple comparisons)
+
+## Common issues and solutions
+Issue: *For Mac users, the error "invalid MEX-file" might happen at the first time of running.*
+
+Solution: This link might help, https://in.mathworks.com/help/matlab/matlab_external/invalid-mex-file-error.html.
+
+Issue: *MATLAB complains that mexmaci64 cannot be opened because the developer cannot be verified.*
+
+Solution: This fieldtrip webpage might help, https://www.fieldtriptoolbox.org/faq/mexmaci64_cannot_be_opened_because_the_developer_cannot_be_verified/.
+
+**Please send us an email at yun.zhao1@monash.edu for further help and support.**
+
+## Work with your own data and visualisation packages
+
 
 ## Code reusability
 NeuroPhysViewer is an open-source software and all users can use it for research, teaching and learning purposes. We kindly ask you to email us if you want to use it in your publication or integrate it in your toolboxes.
