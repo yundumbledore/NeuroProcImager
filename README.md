@@ -29,7 +29,7 @@ In the below sections, you can find:
 
 - After above steps, you download this package (NeuroPhysViewer), unzip and change the current working directory to this package in MATLAB Command Window and run 'defaults', which sets the defaults and configures up the minimal required path settings.
 
-**Fieldtrip is an external package for visualisation purpose. You may use your own preferred visualisation packages, e.g., MNE-python (see 'Work with your own data and visualisation packages' below).**
+**Fieldtrip is optional to download which is exclusively for Case 2 visualisation purpose. You may use your own preferred visualisation packages, e.g., MNE-python (see 'Work with your own data and visualisation packages' below).**
 
 ## Demonstration with example data
 The example data consists of 4714 MEG-derived source timeseries in the cerebral cortex from subject 21 and is available to download at https://drive.google.com/drive/folders/18EvFR4cr6YfhNUgZaijj9L3M1sG6cusL?usp=sharing. The data is to be put under the directory ‘/data’.
