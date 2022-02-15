@@ -34,7 +34,7 @@ In the below sections, you can find:
 ## Demonstration with example data
 The example data consists of 4714 MEG-derived source timeseries in the cerebral cortex from subject 21 and is available to download at https://drive.google.com/drive/folders/18EvFR4cr6YfhNUgZaijj9L3M1sG6cusL?usp=sharing. The data is to be put under the directory ‘/data’.
 
-Before running showcases, you need to make sure that the current directory is ‘whole-brain-imaging’. In this directory, you can find a file called ‘test.m’ and this is the script you want to use to run showcases. Note that there are three critical variables in 'test.m' to check before you run the script:
+Before running showcases, you need to make sure that the current directory is ‘NeuroPhysViewer’. In this directory, you can find a file called ‘test.m’ and this is the script you want to use to run showcases. Note that there are three critical variables in 'test.m' to check before you run the script:
 1.	‘pipeline’: put “AKF estimation” or “Contrast imaging” in the list to indicate which showcase to run.
 2.	‘ncpu’:  number of CPU cores you want to use. By default, NeuroPhysViewer uses all cores in your CPU.
 3.	‘multiple_comparison_correction’:  put 0 or 1 to indicate whether to perform corrections for multiple comparisons problem in Case 2.
