@@ -1,7 +1,7 @@
-# NeuroPhysViewer
+# NeuroMechImager
 #### Yun Zhao (Monash University, Australia), Email: yun.zhao1@monash.edu
 
-**NeuroPhysViewer** is associated with the manuscript *Space-time resolved inference-basedcwhole-brain imaging of neural mechanisms: application to resting state alpha rhythm*.
+**NeuroMechImager** is associated with the manuscript *Space-time resolved inference-basedcwhole-brain imaging of neural mechanisms: application to resting state alpha rhythm*.
 
 In general, **NeuroMechImager** is an inferenced-based whole-brain imaging framework, aiming at visualising nuerophysiological variables and thereby providing a novel way to understand neural mechanisms underlying given brain state. In this repository, there are two critical components, 
 1. Analytical Kalman Filter: estimates time-resolved neurophysiological variable in the neural mass model from the actual measurement
