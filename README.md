@@ -36,7 +36,7 @@ The example data consists of 4714 MEG-derived source timeseries in the cerebral 
 
 Before running showcases, you need to make sure that the current directory is ‘NeuroMechImager’. In this directory, you can find a file called ‘test.m’ and this is the script you want to use to run showcases. Note that there are three critical variables in 'test.m' to check before you run the script:
 1.	‘pipeline’: put “AKF estimation” or “Contrast imaging” in the list to indicate which showcase to run.
-2.	‘ncpu’:  number of CPU cores you want to use. By default, NeuroPhysViewer uses all cores in your CPU.
+2.	‘ncpu’:  number of CPU cores you want to use. By default, NeuroMechImager uses all cores in your CPU.
 3.	‘multiple_comparison_correction’:  put 0 or 1 to indicate whether to perform corrections for multiple comparisons problem in Case 2.
 
 ### Case 1: Neurophysiological variables inference by AKF. 
@@ -80,7 +80,7 @@ Solution: This fieldtrip webpage might help, https://www.fieldtriptoolbox.org/fa
 
 ## Work with your own data and visualisation packages
 ### Use your own data with AKF
-NeuroPhysViewer works with EEG, ECoG, MEG source imaging data. You need to name your data file in this format 'data_[subject_index].mat', e.g., 'data_29.mat' means the data coming from subject 29, and put the data file in the directory '/data'. Then, you need to open the MATLAB script ‘test.m’ and put "AKF estimation" in the ‘pipeline’ list. You can run the script by entering the following command in the MATLAB Command Window: ‘test’. Finally, the output is a file containing neurophysiological variable estimates for every channel (source point) at ‘/output/variable_estimates_[subject_index].mat’, e.g., 'variable_estimates_29.mat' means the neurophysiological variable estimates for subject 29. There are eight matrices in the output file and they are the neurophysiological variable estimates for α_ep, α_ip, α_pe, α_pi, μ, v_e, v_i, v_p. Note that you can put more than 1 data file in the '/data' directory.
+NeuroMechImager works with EEG, ECoG, MEG source imaging data. You need to name your data file in this format 'data_[subject_index].mat', e.g., 'data_29.mat' means the data coming from subject 29, and put the data file in the directory '/data'. Then, you need to open the MATLAB script ‘test.m’ and put "AKF estimation" in the ‘pipeline’ list. You can run the script by entering the following command in the MATLAB Command Window: ‘test’. Finally, the output is a file containing neurophysiological variable estimates for every channel (source point) at ‘/output/variable_estimates_[subject_index].mat’, e.g., 'variable_estimates_29.mat' means the neurophysiological variable estimates for subject 29. There are eight matrices in the output file and they are the neurophysiological variable estimates for α_ep, α_ip, α_pe, α_pi, μ, v_e, v_i, v_p. Note that you can put more than 1 data file in the '/data' directory.
 
 ### Use your own visualisation packages
 The output generated from "AKF estimation", the variable estimates file(s), can be further analysed by other statistical methods and visualised by other packages. In this repository, we provide one option, **Fieldtrip**, to visualise t-statistics derived from two-sample t-test which reveals the mean difference of variable estimates during strong and weak occipital alpha rhythm in a whole-brain manner.
@@ -88,6 +88,6 @@ The output generated from "AKF estimation", the variable estimates file(s), can 
 To use other visualisation toolboxes or packages, one needs to note that in the variable estimates file there are eight matrices and they are the neurophysiological variable estimates for α_ep, α_ip, α_pe, α_pi, μ, v_e, v_i, v_p. Each matrix is of size (number of channels x timesteps of the recording).
 
 ## Code reusability
-NeuroPhysViewer is an open-source software and all users can use it for research, teaching and learning purposes. We kindly ask you to email us if you want to use it in your publication or integrate it in your toolboxes.
+NeuroMechImager is an open-source software and all users can use it for research, teaching and learning purposes. We kindly ask you to email us if you want to use it in your publication or integrate it in your toolboxes.
 
 Currently, we offer NeuroPhysViewer as a prototype containing two demo cases in terms of resting state alpha rhythm study: analytic Kalman Filter for neurophysiological variables estimation, whole-brain contrast imaging. In the upcoming updates, we will provide other estimation methods, other visulisation modules.
