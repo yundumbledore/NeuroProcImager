@@ -497,9 +497,9 @@ def propagate_metrics(N_syn, N_states, N_inputs, A, B, C, P_0p, xi_0p, varsigma,
     return output
 
 if __name__ == "__main__":
-    # Create a directory if not exists
-    # This part is hardcoded for the demo case
+    # This part is hardcoded for a demo case
     # Please modify it according to your needs
+    # You can use your own data by changing the following lines [503-511]
     if not os.path.exists('./output/21'):
         os.makedirs('./output/21')
 
@@ -507,13 +507,24 @@ if __name__ == "__main__":
     data = data_dict['virtualdata_timeseries']
     time = 50
     Fs = 400
+    channels = 5 # only take the first 5 channels as a demonstration
+    downsampled_size = 33375 # downsample the meg data
 
-    # Run the filter for the first 3 channels for demonstration
-    for iCh in range(1,4):
+    aEP_collection = np.zeros([channels, downsampled_size])
+    aIP_collection = np.zeros([channels, downsampled_size])
+    aPE_collection = np.zeros([channels, downsampled_size])
+    aPI_collection = np.zeros([channels, downsampled_size])
+    mu_collection = np.zeros([channels, downsampled_size])
+    v_e_collection = np.zeros([channels, downsampled_size])
+    v_i_collection = np.zeros([channels, downsampled_size])
+    v_p_collection = np.zeros([channels, downsampled_size])
+
+    # Run the filter for demonstration
+    for iCh in range(0,channels):
         print('Channel %02d ...' % (iCh)) # Print current channel
         y = data[iCh,:]
         y = 5.4724e+12 * y # scale the data to the same magnitude of the model output
-        y = signal.resample(y, 33375) # downsample the data
+        y = signal.resample(y, downsampled_size) # downsample the data
 
         # Initialize input
         ext_input = 300#300 # External input
@@ -553,15 +564,9 @@ if __name__ == "__main__":
         kappa_0 = 10000
         T_end_anneal = N_samples/20
 
-        # Get one channel at a time
-        # NB - portal data is inverte
-            # range for the model, but still capture amplitude differences between
-        # seizures
-    #     y = -0.5 * Seizure[:, iCh-1:iCh]
         N_samples = y.size
 
-        # Redefine xi_hat and P because N_samples changed:
-        #   Set initial conditions for the Kalman Filter
+        # Set initial conditions for the Kalman Filter
         xi_hat = np.zeros([N_states, N_samples])
         P_hat = np.zeros([N_states, N_states, N_samples])
         P_diag = np.zeros([N_states, N_samples])
@@ -600,14 +605,21 @@ if __name__ == "__main__":
                     print(file, 'cannot find PSD')
             P_diag[:,t] = np.diag(P_hat[:,:,t])
 
-        aEP = xi_hat[12,:]
-        aIP = xi_hat[9,:]
-        aPE = xi_hat[11,:]
-        aPI = xi_hat[10,:]
-        mu = xi_hat[8,:]
-        v_e = xi_hat[4,:]
-        v_i = xi_hat[2,:]
-        v_p = np.matmul(H,xi_hat)
-        mdic = {"aEP_hat": aEP, "aIP_hat": aIP, "aPE_hat": aPE, "aPI_hat": aPI, "input_hat": mu,
-               "v_es_hat": v_e, "v_ii_hat": v_i, "v_pyr_hat": v_p}
-        savemat("./output/21/est_Ch_%d.mat"%(iCh), mdic)
+        aEP_collection[iCh,:] = xi_hat[12,:]
+        aIP_collection[iCh,:] = xi_hat[9,:]
+        aPE_collection[iCh,:] = xi_hat[11,:]
+        aPI_collection[iCh,:] = xi_hat[10,:]
+        mu_collection[iCh,:] = xi_hat[8,:]
+        v_e_collection[iCh,:] = xi_hat[4,:]
+        v_i_collection[iCh,:] = xi_hat[2,:]
+        v_p_collection[iCh,:] = np.matmul(H,xi_hat)
+
+# save estimates (optional)
+np.savetxt("./output/21/aEP_estimate.csv", aEP_collection, delimiter=",")
+np.savetxt("./output/21/aIP_estimate.csv", aIP_collection, delimiter=",")
+np.savetxt("./output/21/aPE_estimate.csv", aPE_collection, delimiter=",")
+np.savetxt("./output/21/aPI_estimate.csv", aPI_collection, delimiter=",")
+np.savetxt("./output/21/mu_estimate.csv", mu_collection, delimiter=",")
+np.savetxt("./output/21/v_e_estimate.csv", v_e_collection, delimiter=",")
+np.savetxt("./output/21/v_i_estimate.csv", v_i_collection, delimiter=",")
+np.savetxt("./output/21/v_p_estimate.csv", v_p_collection, delimiter=",")
