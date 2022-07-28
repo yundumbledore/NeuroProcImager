@@ -7,6 +7,10 @@ from tqdm import tqdm
 import os
 from scipy import signal
 from scipy.io import savemat
+import pyarrow as pa
+import pyarrow.parquet as pq
+import warnings
+warnings.filterwarnings('ignore')
 
 ### Define some functions
 def isPD(B):
@@ -496,18 +500,41 @@ def propagate_metrics(N_syn, N_states, N_inputs, A, B, C, P_0p, xi_0p, varsigma,
     }
     return output
 
+# save estimates to parquet files
+def save_estimate(estimate, save_file_name):
+    arrays = [
+        pa.array(col)  # Create one arrow array per column
+        for col in estimate
+    ]
+
+    table = pa.Table.from_arrays(
+        arrays,
+        names=[str(i) for i in range(len(arrays))] # give names to each columns
+    )
+    pq.write_table(table,save_file_name)
+
+# load estimate from parquet files
+def load_estimate(save_file_name):
+    table_from_parquet = pq.read_table(save_file_name)
+    matrix_from_parquet = table_from_parquet.to_pandas().T.to_numpy()
+    return matrix_from_parquet
+
 if __name__ == "__main__":
     # This part is hardcoded for a demo case
     # Please modify it according to your needs
     # You can use your own data by changing the following lines [503-511]
+    print('##################################################')
+    print('This demonstration requires a lot of storage space \n due to the parameter estimates file is very big.')
+    print('##################################################')
+
     if not os.path.exists('./output/21'):
         os.makedirs('./output/21')
 
     data_dict = mat73.loadmat('./data/data_21.mat')
     data = data_dict['virtualdata_timeseries']
     time = 50
-    Fs = 400
-    channels = 5 # only take the first 5 channels as a demonstration
+    Fs = 150
+    channels = 20 # only take the first 5 channels as a demonstration
     downsampled_size = 33375 # downsample the meg data
 
     aEP_collection = np.zeros([channels, downsampled_size])
@@ -573,53 +600,56 @@ if __name__ == "__main__":
         xi_hat[:,0] = xi_hat_init
         P_hat[:,:,0] = P_hat_init
 
-        for t in tqdm(range(1,N_samples)):
+        try:
+            for t in range(1,N_samples):
 
-            xi_0p = xi_hat[:, t-1].squeeze()
-            P_0p = P_hat[:, :, t-1].squeeze()
+                xi_0p = xi_hat[:, t-1].squeeze()
+                P_0p = P_hat[:, :, t-1].squeeze()
 
-            # Predict
-            metrics = propagate_metrics(N_syn, N_states, N_inputs, A, B, C, P_0p, xi_0p, varsigma, v0, Q)
-            xi_1m = metrics['xi_1m']
-            P_1m = metrics['P_1m']
+                # Predict
+                metrics = propagate_metrics(N_syn, N_states, N_inputs, A, B, C, P_0p, xi_0p, varsigma, v0, Q)
+                xi_1m = metrics['xi_1m']
+                P_1m = metrics['P_1m']
 
-            if (t <= T_end_anneal) & (anneal_on):
-                kappa = pow(kappa_0, (T_end_anneal-t-1)/(T_end_anneal-1))
-            else:
-                kappa = 1
+                if (t <= T_end_anneal) & (anneal_on):
+                    kappa = pow(kappa_0, (T_end_anneal-t-1)/(T_end_anneal-1))
+                else:
+                    kappa = 1
 
-            # K = P_1m*H'/(H*P_1m*H' + kappa*R);
-            K = np.divide(np.matmul(P_1m, np.transpose(H)), np.matmul(H, np.matmul(P_1m, np.transpose(H))) + kappa*R)
+                # K = P_1m*H'/(H*P_1m*H' + kappa*R);
+                K = np.divide(np.matmul(P_1m, np.transpose(H)), np.matmul(H, np.matmul(P_1m, np.transpose(H))) + kappa*R)
 
-            # Correct
-            xi_1m = np.reshape(xi_1m, [xi_1m.size, 1])
-            xi_hat[:, t:t+1] = xi_1m + K*(y[t] - np.matmul(H, xi_1m))
+                # Correct
+                xi_1m = np.reshape(xi_1m, [xi_1m.size, 1])
+                xi_hat[:, t:t+1] = xi_1m + K*(y[t] - np.matmul(H, xi_1m))
 
-            P_hat[:,:,t] = np.matmul((np.identity(N_states) - np.matmul(K,H)), P_1m)
-            try:
-                P_hat[:,:,t] = (P_hat[:,:,t] + np.transpose(P_hat[:,:,t]))/2
-                chol_matrix = np.linalg.cholesky(P_hat[:,:,t])
-            except(np.linalg.LinAlgError):
-                P_hat[:,:,t] , k = nearest_spd(P_hat[:,:,t])
-                if k == -1:
-                    print(file, 'cannot find PSD')
-            P_diag[:,t] = np.diag(P_hat[:,:,t])
+                P_hat[:,:,t] = np.matmul((np.identity(N_states) - np.matmul(K,H)), P_1m)
+                try:
+                    P_hat[:,:,t] = (P_hat[:,:,t] + np.transpose(P_hat[:,:,t]))/2
+                    chol_matrix = np.linalg.cholesky(P_hat[:,:,t])
+                except(np.linalg.LinAlgError):
+                    P_hat[:,:,t] , k = nearest_spd(P_hat[:,:,t])
+                    if k == -1:
+                        print(file, 'cannot find PSD')
+                P_diag[:,t] = np.diag(P_hat[:,:,t])
 
-        aEP_collection[iCh,:] = xi_hat[12,:]
-        aIP_collection[iCh,:] = xi_hat[9,:]
-        aPE_collection[iCh,:] = xi_hat[11,:]
-        aPI_collection[iCh,:] = xi_hat[10,:]
-        mu_collection[iCh,:] = xi_hat[8,:]
-        v_e_collection[iCh,:] = xi_hat[4,:]
-        v_i_collection[iCh,:] = xi_hat[2,:]
-        v_p_collection[iCh,:] = np.matmul(H,xi_hat)
+            aEP_collection[iCh,:] = xi_hat[12,:]
+            aIP_collection[iCh,:] = xi_hat[9,:]
+            aPE_collection[iCh,:] = xi_hat[11,:]
+            aPI_collection[iCh,:] = xi_hat[10,:]
+            mu_collection[iCh,:] = xi_hat[8,:]
+            v_e_collection[iCh,:] = xi_hat[4,:]
+            v_i_collection[iCh,:] = xi_hat[2,:]
+            v_p_collection[iCh,:] = np.matmul(H,xi_hat)
+        except:
+            continue
 
-# save estimates (optional)
-np.savetxt("./output/21/aEP_estimate.csv", aEP_collection, delimiter=",")
-np.savetxt("./output/21/aIP_estimate.csv", aIP_collection, delimiter=",")
-np.savetxt("./output/21/aPE_estimate.csv", aPE_collection, delimiter=",")
-np.savetxt("./output/21/aPI_estimate.csv", aPI_collection, delimiter=",")
-np.savetxt("./output/21/mu_estimate.csv", mu_collection, delimiter=",")
-np.savetxt("./output/21/v_e_estimate.csv", v_e_collection, delimiter=",")
-np.savetxt("./output/21/v_i_estimate.csv", v_i_collection, delimiter=",")
-np.savetxt("./output/21/v_p_estimate.csv", v_p_collection, delimiter=",")
+# save estimates to parquet files to minimise the storage required
+    save_estimate(aEP_collection, './output/21/aEP_estimate.pq')
+    save_estimate(aIP_collection, './output/21/aIP_estimate.pq')
+    save_estimate(aPE_collection, './output/21/aPE_estimate.pq')
+    save_estimate(aPI_collection, './output/21/aPI_estimate.pq')
+    save_estimate(mu_collection, './output/21/mu_estimate.pq')
+    save_estimate(v_e_collection, './output/21/v_e_estimate.pq')
+    save_estimate(v_i_collection, './output/21/v_i_estimate.pq')
+    save_estimate(v_p_collection, './output/21/v_p_estimate.pq')
