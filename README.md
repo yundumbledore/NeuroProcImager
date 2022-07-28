@@ -92,4 +92,4 @@ To use other visualisation toolboxes or packages, one needs to note that in the 
 ## Code reusability
 NeuroProcImager is an open-source software and all users can use it for research, teaching and learning purposes. We kindly ask you to email us if you want to use it in your publication or integrate it in your toolboxes.
 
-Currently, we offer NeuroMechImager as a prototype containing two demo cases in terms of resting state alpha rhythm study: analytic Kalman Filter for neurophysiological variables estimation, whole-brain contrast imaging. In the upcoming updates, we will provide other estimation methods, other visulisation modules.
+Currently, we offer NeuroProcImager as a prototype containing two demo cases in terms of resting state alpha rhythm study: analytic Kalman Filter for neurophysiological variables estimation, whole-brain contrast imaging. In the upcoming updates, we will provide other estimation methods, other visulisation modules.
