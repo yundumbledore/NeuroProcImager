@@ -534,7 +534,7 @@ if __name__ == "__main__":
     data = data_dict['virtualdata_timeseries']
     time = 50
     Fs = 150
-    channels = 20 # only take the first 5 channels as a demonstration
+    channels = 4714
     downsampled_size = 33375 # downsample the meg data
 
     aEP_collection = np.zeros([channels, downsampled_size])
