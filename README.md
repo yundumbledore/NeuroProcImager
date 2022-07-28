@@ -27,16 +27,16 @@ In the below sections, you can find:
 
 - Fieldtrip version equals to or later than 20200828 is also required and available to download from https://www.fieldtriptoolbox.org. Another link is helpful for you to add fieldtrip path to your MATLAB https://www.fieldtriptoolbox.org/faq/should_i_add_fieldtrip_with_all_subdirectories_to_my_matlab_path/.
 
-- After above steps, you download this package (NeuroMechImager), unzip and change the current working directory to this package in MATLAB Command Window and run 'defaults', which sets the defaults and configures up the minimal required path settings.
+- After above steps, you download this package (NeuroProcImager), unzip and change the current working directory to this package in MATLAB Command Window and run 'defaults', which sets the defaults and configures up the minimal required path settings.
 
 **Fieldtrip is optional to download which is exclusively for Case 2 visualisation purpose. You may use your own preferred visualisation packages, e.g., MNE-python (see 'Work with your own data and visualisation packages' below).**
 
 ## Demonstration with example data
 The example data consists of 4714 MEG-derived source timeseries in the cerebral cortex from subject 21 and is available to download at https://drive.google.com/drive/folders/18EvFR4cr6YfhNUgZaijj9L3M1sG6cusL?usp=sharing. The data is to be put under the directory ‘/data’.
 
-Before running showcases, you need to make sure that the current directory is ‘NeuroMechImager’. In this directory, you can find a file called ‘test.m’ and this is the script you want to use to run showcases. Note that there are three critical variables in 'test.m' to check before you run the script:
+Before running showcases, you need to make sure that the current directory is ‘NeuroProcImager’. In this directory, you can find a file called ‘test.m’ and this is the script you want to use to run showcases. Note that there are three critical variables in 'test.m' to check before you run the script:
 1.	‘pipeline’: put “AKF estimation” or “Contrast imaging” in the list to indicate which showcase to run.
-2.	‘ncpu’:  number of CPU cores you want to use. By default, NeuroMechImager uses all cores in your CPU.
+2.	‘ncpu’:  number of CPU cores you want to use. By default, NeuroProcImager uses all cores in your CPU.
 3.	‘multiple_comparison_correction’:  put 0 or 1 to indicate whether to perform corrections for multiple comparisons problem in Case 2.
 
 ### Case 1: Neurophysiological variables inference by AKF. 
