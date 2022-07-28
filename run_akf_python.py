@@ -524,7 +524,8 @@ if __name__ == "__main__":
     # Please modify it according to your needs
     # You can use your own data by changing the following lines [503-511]
     print('##################################################')
-    print('This demonstration requires a lot of storage space \n due to the parameter estimates file is very big.')
+    print('This demonstration requires a lot of storage space \n due to the parameter estimates file is very big.\n')
+    print('Consider downsampling or reducing channels.')
     print('##################################################')
 
     if not os.path.exists('./output/21'):
