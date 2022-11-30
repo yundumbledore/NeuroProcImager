@@ -1,7 +1,7 @@
 # NeuroProcImager
 #### Yun Zhao (Monash University, Australia), Email: yun.zhao1@monash.edu
 
-**NeuroProcImager** is associated with the Neuroimage paper *Space-time resolved inference-based neurophysiological process imaging: Application to resting-state alpha rhythm*.
+**NeuroProcImager** is associated with the Neuroimage paper *Space-time resolved inference-based neurophysiological process imaging: Application to resting-state alpha rhythm*. https://www.sciencedirect.com/science/article/pii/S1053811922007078
 
 In general, **NeuroProcImager** is an inferenced-based whole-brain imaging framework, aiming at visualising nuerophysiological variables and thereby providing a novel way to understand neural mechanisms underlying given brain state. In this repository, there are two critical components, 
 1. Analytical Kalman Filter: estimates time-resolved neurophysiological variable in the neural mass model from the actual measurement
