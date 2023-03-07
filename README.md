@@ -1,5 +1,5 @@
 # NeuroProcImager
-#### Yun Zhao (Monash University, Australia), Email: yun.zhao1@monash.edu
+#### Yun Zhao, Levin Kuhlmann (Monash University, Australia), Email: yun.zhao1@monash.edu, levin.kuhlmann@monash.edu
 
 **NeuroProcImager** is associated with the Neuroimage paper *Space-time resolved inference-based neurophysiological process imaging: Application to resting-state alpha rhythm*. https://www.sciencedirect.com/science/article/pii/S1053811922007078
 
